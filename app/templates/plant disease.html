@@ -1,0 +1,87 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detection</title>
+    <style>
+    #image-upload { 
+    display: block;
+    margin: 10px auto;
+    width: 15%; 
+   font-size: 20px;
+   
+    
+  }
+body{
+        background-image: url("{{ url_for('static', filename='images/plant image.jpeg') }}"); 
+        background-size: 1500px,1500px;
+        background-repeat: no-repeat;
+        text-align: center;
+
+    }
+
+    </style>
+</head>
+<body>
+    <br><br>
+    <h1>Add image of the leaf to find out Disease</h1>
+    <label for="image-upload"></label>
+  <input type="file" id="image-upload" name="image-upload" accept="image/*" >
+    
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detection</title>
+    <style>
+        #image-upload { 
+            display: block;
+            margin: 10px auto;
+            width: 15%; 
+            font-size: 20px;
+        }
+        body {
+            background-image: url("{{ url_for('static', filename='images/plant image.jpeg') }}"); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 50px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #534caf;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: left;
+        }
+        
+    </style>
+</head>
+<body>
+    <br><br>
+    <h1>Add image of the leaf to find out Disease</h1>
+    <form method="POST" action="{{ url_for('disease_prediction') }}" enctype="multipart/form-data">
+        <input type="file" id="image-upload" name="file" accept="image/*">
+        <br/><br/>
+        <input type="submit" value="Predict">
+        <br>
+        <br>
+    
+        <a href="{{ url_for('home') }}" class="btn"  >Go Home</a>
+        <a href="{{ url_for('next_page') }}" class="btn" >Go to Menu</a>
+    </form>
+    
+</body>
+</html>

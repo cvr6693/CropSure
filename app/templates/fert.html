@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizer Suggestion</title>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/fertilizer image.jpg') }}"); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 50px;
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            filter: blur(5px);
+            z-index: -1;
+        }
+
+        h1 {
+            color: rgb(25, 16, 16);
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            width: 200px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 270px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: large;
+        }
+        
+        select {
+            width: 280px;
+            height: 40px;
+            padding: 1px;
+            font-size: large;
+            border: 1px solid #efebeb;
+            border-radius: 5px;
+            opacity: 0.92;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #534caf;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+      function validateInputs() {
+          let nitrogen = document.getElementById("nitrogen").value;
+          let phosphorus = document.getElementById("phosphorus").value;
+          let potassium = document.getElementById("potassium").value;
+          let crop = document.getElementById("crop").value;
+          
+          let errors = [];
+
+          if (!(nitrogen <= 150 && nitrogen > 0)) {
+              errors.push("Nitrogen value must be between 0 and 150.");
+          }
+
+          if (!(phosphorus < 150 && phosphorus > 0)){
+              errors.push("Phosphorus value must be between 0 and 150.");
+          }
+
+          if (!(potassium < 210 && potassium > 0)){
+              errors.push("Potassium value must be between 0 and 210.");
+          }
+
+          if (crop === "") {
+              errors.push("Please select a crop.");
+          }
+
+          if (errors.length > 0) {
+              alert(errors.join("\n"));
+              return false;
+          }
+          
+          return true; // Allow form submission
+      }
+    </script>
+</head>
+<body>
+    <h1>Add Values for Fertilizer Suggestion</h1>
+    <br><br>
+
+    <form action="{{ url_for('fert_recommend') }}" method="POST" onsubmit="return validateInputs();">
+        <div class="form-group">
+            <label for="nitrogen">Nitrogen (N):</label>
+            <input type="number" id="nitrogen" name="nitrogen" placeholder="Enter value between 0 to 150" min="0" max="150" step="0.1">
+        </div>
+
+        <div class="form-group">
+            <label for="phosphorus">Phosphorus (P):</label>
+            <input type="number" id="phosphorus" name="phosphorus" placeholder="Enter value between 0 to 150" min="0" max="150" step="0.1">
+        </div>
+
+        <div class="form-group">
+            <label for="potassium">Potassium (K):</label>
+            <input type="number" id="potassium" name="potassium" placeholder="Enter value between 0 to 210" min="0" max="210" step="0.1">
+        </div>
+
+        <div class="form-group">
+            <label for="crop">Select Crop:</label>
+            <select id="crop" name="crop">
+                
+
+                <option value="">Select Crop</option>
+                <option value="apple">apple</option>
+          <option value="banana">banana</option>
+          <option value="blackgram">blackgram</option>
+          <option value="chickpea">chickpea</option>
+          <option value="coconut">coconut</option>
+          <option value="coffee">coffee</option>
+          <option value="cotton">cotton</option>
+          <option value="grapes">grapes</option>
+          <option value="jute">jute</option>
+          <option value="kidneybeans">kidneybeans</option>
+          <option value="lentil">lentil</option>
+          <option value="maize">maize</option>
+          <option value="mango">mango</option>
+          <option value="mothbeans">mothbeans</option>
+          <option value="mungbean">mungbean</option>
+          <option value="muskmelon">muskmelon</option>
+          <option value="orange">orange</option>
+          <option value="papaya">papaya</option>
+          <option value="pigeonpeas">pigeonpeas</option>
+          <option value="pomegranate">pomegranate</option>
+          <option value="rice">rice</option>
+          <option value="watermelon">watermelon</option>
+            </select>
+        </div>
+
+        <button type="submit" style="display: block; margin: 20px auto; padding: 10px 20px; font-size: 18px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Submit
+        </button>
+        <a href="{{ url_for('home') }}" class="btn" color="black">Go Home</a>
+        <a href="{{ url_for('next_page') }}" class="btn">Go to Menu</a>
+    </form>
+</body>
+</html>

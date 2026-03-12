@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            gap: 20px;
+        }
+
+        .box {
+            width: 250px;
+            height: 250px;
+            background-color: #f6d77b;
+            color: rgb(10, 10, 10);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .box:hover {
+            background-color: #f6d77b;
+            transform: scale(1.1);
+        }
+        body{
+        background-image: url("{{ url_for('static', filename='images/next image.jpeg') }}"); 
+        background-size: 1500px,1500px;
+        background-repeat: no-repeat;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" onclick="openPage('{{ url_for('crop_recommend') }}')">Crop Recommendation</div>
+        <div class="box" onclick="openPage('{{ url_for('fertilizer_recommendation') }}')">Fertilizer Suggestion</div>
+        <div class="box" onclick="openPage('{{ url_for('plant_disease_detection') }}')">Plant Disease Detection</div>
+    </div>
+    <script>
+        function openPage(url) {
+            window.location.href = url;
+        }
+    </script>
+    
+</body>
+</html>

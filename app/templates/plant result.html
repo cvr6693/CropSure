@@ -1,0 +1,107 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detection Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/plant image.jpeg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+        .result-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+            max-width: 600px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Plant Disease Detection Result</h1>
+    <div class="result-container">
+        
+        <!-- 'prediction' already contains the description from disease_dic 
+        <p>{{ prediction | safe }}</p>
+        <a href="{{ url_for('disease_prediction') }}" class="btn">Try Again</a>
+    </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detection Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/plant image.jpeg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+        .result-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+            max-width: 600px;
+            text-align: justify;
+        }
+        .btn {
+            display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+        }
+        .bottom-left-buttons {
+            position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Plant Disease Detection Result</h1>
+    <div class="result-container">
+        <p>{{ prediction | safe }}</p>
+    </div>
+    <div class="bottom-left-buttons">
+    <a href="{{ url_for('disease_prediction') }}" class="btn">Try Again</a>
+        <a href="{{ url_for('home') }}" class="btn">Go Home</a>
+    </div>
+
+</body>
+</html>
+
